@@ -1,18 +1,30 @@
 <template>
   <div id="app">
-    <router-view name="header" />
-    <router-view />
+    <!-- <router-view name="sidebar" /> -->
+    <div class="main-content">
+      <router-view name="header" />
+      <!-- <div class="scroller"> -->
+        <router-view />
+      <router-view name="chat" />
+    </div>
+          <router-view name="footer" />
+    <!-- </div> -->
   </div>
 </template>
 
 <script>
-import Navbar from './views/Navbar'
-import Home from './views/Home'
-// import Footer from './views/Footer'
 export default {
-  name: 'App',
-  components: {
-    Navbar
-  }
+  name: 'App'
 }
 </script>
+
+<style>
+.scroller{
+scroll-behavior: smooth;
+  transition-property: height;
+  transition-duration: 2s;
+  transition-timing-function: linear;
+  transition-delay: 1s;
+}
+
+</style>

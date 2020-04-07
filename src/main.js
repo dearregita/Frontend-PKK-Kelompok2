@@ -6,7 +6,7 @@ import VueAxios from 'vue-axios'
 import VueCookies from 'vue-cookies'
 import BootstrapVue from 'bootstrap-vue'
 import App from './App.vue'
-
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(BootstrapVue)
 Vue.use(VueCookies)
