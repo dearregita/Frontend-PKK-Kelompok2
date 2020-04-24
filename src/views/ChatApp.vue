@@ -390,27 +390,22 @@ body {
   font-family: 'Open Sans',sans-serif;
   margin-top:20px;
 }
-
 .bg-white {
   background-color: #fff;
 }
-
 .friend-list {
   list-style: none;
 margin-left: -40px;
 }
-
 .friend-list li {
   border-bottom: 1px solid #eee;
 }
-
 .friend-list li a img {
   float: left;
   width: 45px;
   height: 45px;
   margin-right: 0px;
 }
-
  .friend-list li a {
   position: relative;
   display: block;
@@ -421,33 +416,27 @@ margin-left: -40px;
   -ms-transition: all .2s ease;
   -o-transition: all .2s ease;
 }
-
 .friend-list li.active a {
   background-color: #f1f5fc;
 }
-
 .friend-list li a .friend-name, 
 .friend-list li a .friend-name:hover {
   color: #777;
 }
-
 .friend-list li a .last-message {
   width: 65%;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 }
-
 .friend-list li a .time {
   position: absolute;
   top: 10px;
   right: 8px;
 }
-
 small, .small {
   font-size: 85%;
 }
-
 .friend-list li a .chat-alert {
   position: absolute;
   right: 8px;
@@ -455,20 +444,16 @@ small, .small {
   font-size: 10px;
   padding: 3px 5px;
 }
-
 .chat-message {
   padding: 60px 20px 115px;
 }
-
 .chat {
     list-style: none;
     margin: 0;
 }
-
 .chat-message{
     background: #f9f9f9;  
 }
-
 .chat li img {
   width: 45px;
   height: 45px;
@@ -476,20 +461,16 @@ small, .small {
   -moz-border-radius: 50em;
   -webkit-border-radius: 50em;
 }
-
 img {
   max-width: 100%;
 }
-
 .chat-body {
   padding-bottom: 20px;
 }
-
 .chat li.left .chat-body {
   margin-left: 70px;
   background-color: #fff;
 }
-
 .chat li .chat-body {
   position: relative;
   font-size: 11px;
@@ -499,16 +480,13 @@ img {
   -moz-box-shadow: 0 1px 1px rgba(0,0,0,.05);
   -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
 }
-
 .chat li .chat-body .header {
   padding-bottom: 5px;
   border-bottom: 1px solid #f1f5fc;
 }
-
 .chat li .chat-body p {
   margin: 0;
 }
-
 .chat li.left .chat-body:before {
   position: absolute;
   top: 10px;
@@ -526,7 +504,6 @@ img {
   -ms-transform: rotate(-45deg);
   -o-transform: rotate(-45deg);
 }
-
 .chat li.right .chat-body:before {
   position: absolute;
   top: 10px;
@@ -544,16 +521,13 @@ img {
   -ms-transform: rotate(45deg);
   -o-transform: rotate(45deg);
 }
-
 .chat li {
   margin: 15px 0;
 }
-
 .chat li.right .chat-body {
   margin-right: 70px;
   background-color: #fff;
 }
-
 .chat-box {
   position: fixed;
   bottom: 0;
@@ -567,11 +541,9 @@ img {
   -ms-transition: all .5s ease;
   -o-transition: all .5s ease;
 }
-
 .primary-font {
   color: #3c8dbc;
 }
-
 a:hover, a:active, a:focus {
   text-decoration: none;
   outline: 0;

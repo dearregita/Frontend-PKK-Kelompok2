@@ -1,0 +1,170 @@
+<script>
+module.exports = {
+  data : function(){
+    return {
+      search: "",
+      id: "",
+      nis: "",
+      nama_siswa: "",
+      email: "",
+      kelas: "",
+      sekolah: "",
+      kategori:"",
+      password:"",
+      name:"",
+      phone:"",
+      profile_picture:"",
+      message: "",
+      currentPage: 1,
+      rows: 0,
+      perPage: 10,
+      key: "",
+      user: [],
+      siswa: [],
+      logged_user: {}
+    }
+  },
+
+  methods: {
+      getGambar: function(){
+        let conf = { headers: { "Authorization" : 'Bearer ' + this.key } };
+    //   let offset = (this.currentPage - 1) * this.perPage;
+      this.$bvToast.show("loadingToast");
+        this.axios.get("http://127.0.0.1:8000/api/admin/")
+            .then(response => {
+                // this.status = response.data.status;
+                if (response.data.status == 1) {
+                    this.user = response.data.user;
+                    console.log(response.data.user);
+        
+                    if (response.data.count == 0) {
+                    this.status = 0;
+            
+                    }
+                } else {
+                this.$bvToast.hide("loadingToast");
+                this.message = "Gagal menampilkan data picture."
+                this.$bvToast.show("message");
+                this.$router.push({name: "home"})
+                    console.log("Data Tidak Ditemukan");
+            
+                }
+                })
+    },
+        pagination : function(){
+      if(this.search == ""){
+        this.getGambar();
+      } else {
+        this.searching();
+      }
+},
+
+    getData : function(){
+      let conf = { headers: { "Authorization" : 'Bearer ' + this.key } };
+      let offset = (this.currentPage - 1) * this.perPage;
+      this.$bvToast.show("loadingToast");
+      this.axios.get("http://127.0.0.1:8000/api/siswa/", conf)
+      .then(response => {
+        if(response.data.status == 1){
+          this.$bvToast.hide("loadingToast");
+          this.siswa = response.data.siswa;
+        } else {
+          this.$bvToast.hide("loadingToast");
+          this.message = "Gagal menampilkan data siswa."
+          this.$bvToast.show("message");
+          this.$router.push({name: "login"})
+        }
+        
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    },
+
+    pagination : function(){
+      if(this.search == ""){
+        this.getData();
+      } else {
+        this.searching();
+      }
+    },
+
+    Add : function(){
+      this.action     = "insert";
+      this.nis        = "";
+      this.nama_siswa = "";
+      this.email      = "";
+      this.kelas      = ""; 
+      this.sekolah    = ""; 
+      this.kategori   = "";
+      this.password   = "";
+    },
+
+    Save : function(){
+      let conf = { headers: { "Authorization" : 'Bearer ' + this.key } };
+      this.$bvToast.show("loadingToast");
+      if(this.action === "insert"){
+        let form = new FormData();
+        form.append("id", this.id);
+        form.append("nis", this.nis);
+        form.append("nama_siswa", this.nama_siswa);
+        form.append("email", this.email);
+        form.append("kelas", this.kelas);
+        form.append("sekolah", this.sekolah);
+        form.append("kategori", this.kategori);
+        form.append("password", this.password);
+
+        this.axios.post("http://127.0.0.1:8000/api/siswa/", conf)
+        .then(response => {
+          this.$bvToast.hide("loadingToast");
+          if(this.search == ""){
+            this.getData();
+          } else {
+            this.searching();
+          }
+          this.message = response.data.message;
+          this.$bvToast.show("message");
+        })
+        .catch(error => {
+          console.log(error);
+        });
+      } else {
+        let form = {
+          nis       : this.nis,
+          nama_siswa: this.nama_siswa,
+          email     : this.email,
+          kelas     : this.kelas,
+          sekolah   : this.sekolah,
+          kategori  : this.kategori,
+          password  : this.password,
+          
+        }
+        this.axios.put("http://127.0.0.1:8000/api/siswa/" + this.id, conf)
+        .then(response => {
+          this.$bvToast.hide("loadingToast");
+          if(this.search == ""){
+            this.getData();
+          } else {
+            this.searching();
+          }
+          this.message = response.data.message;
+          this.$bvToast.show("message");
+        })
+        .catch(error => {
+          console.log(error);
+        });
+      }
+    },
+
+    mounted(){
+    this.key = localStorage.getItem("Authorization");
+    if(localStorage.getItem("logged_user")){
+        this.logged_user = JSON.parse(localStorage.getItem("logged_user"));
+    }
+    this.getGambar();
+    this.getData();
+
+  }
+}
+}
+</script>

@@ -14,17 +14,13 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+
+   data : function(){
+    return {
+      status_login: ''
+    }
+  }
 }
 </script>
 
-<style>
-.scroller{
-scroll-behavior: smooth;
-  transition-property: height;
-  transition-duration: 2s;
-  transition-timing-function: linear;
-  transition-delay: 1s;
-}
-
-</style>
